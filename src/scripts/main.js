@@ -1,25 +1,19 @@
 import { createPlan } from "./plan.js"
-import { createAsparagus } from "./seeds/asparagus.js"
-import { createCorn } from "./seeds/corn.js";
-import { createPotato } from "./seeds/potato.js";
-import { createWheat } from "./seeds/wheat.js";
-import { createSunflower } from "./seeds/sunflower.js";
-import { createSoybean } from "./seeds/soybean.js";
 import { addPlant, usePlants } from "./field.js";
-// import { harvestPlants } from "./harvester.js";
+import { plantSeeds } from "./tractor.js";
+import { harvestPlants } from "./harvester.js";
+import { catalog } from "./catalog.js";
 
 console.log("Welcome to the main module")
 
 const yearlyPlan = createPlan()
 
-// console.log(yearlyPlan)
+plantSeeds(yearlyPlan)
 
-const asparagus = createAsparagus()
-const corn = createCorn()
-addPlant(asparagus)
-addPlant(corn)
+const fieldArray = usePlants()
 
-let fieldArray = usePlants()
+const harvest = harvestPlants(fieldArray)
 
+let html = document.querySelector(".container")
 
-console.log(fieldArray)
+html.innerHTML = catalog(harvest)
