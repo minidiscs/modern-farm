@@ -5,14 +5,21 @@ import { createPotato } from "./seeds/potato.js";
 import { createWheat } from "./seeds/wheat.js";
 import { createSunflower } from "./seeds/sunflower.js";
 import { createSoybean } from "./seeds/soybean.js";
-
+import { addPlant, usePlants } from "./field.js";
+// import { harvestPlants } from "./harvester.js";
 
 console.log("Welcome to the main module")
 
 const yearlyPlan = createPlan()
 
-console.log(yearlyPlan)
+// console.log(yearlyPlan)
 
-const asparagus = (createAsparagus())
+const asparagus = createAsparagus()
+const corn = createCorn()
+addPlant(asparagus)
+addPlant(corn)
 
-console.log(asparagus)
+let fieldArray = usePlants()
+
+
+console.log(fieldArray)
